@@ -1,0 +1,24 @@
+<%= simple_form_for(@product, :html => {:novalidate => true}) do |f| %>
+
+<%= render "shared/error_messages", :target => @product %>
+
+<div class="field">
+<%= f.input :title, :placeholder => 'Please enter Title' %>
+</div>
+<div class="field">
+<%= f.input :description, :input_html => { :maxlength => 500} %> <br/>
+</div>
+<div class="field">
+<%= f.input :image_url %>
+</div>
+
+<div class="field">
+  <%= f.input :price %>
+</div>
+
+<div class="actions">
+    <%# f.button :submit, "CLICK ME BEFORE", :name => "New Product create"%>
+
+<%= f.submit @product.new_record? ? "Julian Talks too much" : "Update Products" %>
+</div>
+<% end %>
