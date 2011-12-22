@@ -35,9 +35,9 @@ class ProductTest < ActiveSupport::TestCase
     Product.new(:title => "My books", :description => "yynnss", :price => 1, :image_url => image_url)
   end
   #Test image url
-  test "url" do
+  test "image_url" do
     ok = %w{ fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg http://a.b.c/x/y/z/fred.gif}
-    bad = %w{ fred.doc fred.gif/more fred.gif.more}
+    bad = %w{ freddoc fred.gif/more fred.gif.more}
 
     ok.each do |name|
       assert new_product(name).valid?, "#{name} shouldn't be invalid"
@@ -47,18 +47,6 @@ class ProductTest < ActiveSupport::TestCase
       assert new_product(name).invalid?, "#{name} shouldn't be valid"
     end
     end
-
-  test "image_url_1" do
-    product = Product.new(:title => "abcd", :description => "Testing image url", :price => 1 )
-    product.image_url = "products"
-    assert product.invalid?
-  end
-
-  test "image_url_2" do
-      product = Product.new(:title => "abcd", :description => "Testing image url", :price => 1 )
-      product.image_url = "img.jpg"
-      assert product.valid?
-  end
 
  test "product not valid with out unique title" do
    product = Product.new(:title       => products(:ruby).title,

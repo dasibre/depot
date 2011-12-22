@@ -1,2 +1,16 @@
-<h>My Book Store</h>
-<% @products.each do |product| -%>
+<% if notice %>
+<p id="notice"><%= notice %> </p>
+<% end %>
+<h1>Your Book Catalog</h1>
+
+<%= @products.each do |product| %>
+<div class="entry">
+  <%= image_tag(product.image_url) %>
+  <h2><%= product.title %></h2>
+<%=sanitize product.description %>
+  <div class="price_line">
+    <span class="price"><%= number_to_currency(product.price) %></span>
+  </div>
+</div>
+<%  end %>
+
