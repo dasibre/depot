@@ -16,6 +16,8 @@ class ProductsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
+    assert_select '#product_list table', :minimum => 1
+    assert_select '#product_list table tr td'
     assert_not_nil assigns(:products)
   end
 

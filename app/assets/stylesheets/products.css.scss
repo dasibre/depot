@@ -113,3 +113,9 @@
   font-weight: bold;
   margin-right: 2em;
 }
+
+/* START:inline */
+#store .entry form, #store .entry form div {
+  display: inline;
+}
+/* END:inline */

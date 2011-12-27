@@ -1,6 +1,9 @@
 class StoreController < ApplicationController
+
   def index
-    @products = Product.all
+    increment_count
+    @products = Product.all 
   end
 
+ 
 end
