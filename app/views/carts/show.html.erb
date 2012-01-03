@@ -1,9 +1,19 @@
+<% if notice %>
 <p id="notice"><%= notice %></p>
-<ul>
-<% for item in @cart.line_items %>
-  <li><%= item.quantity %> &times; <%= item.product.title %> </li>
 <% end %>
-</ul>
+<table>
+<% for item in @cart.line_items %> <tr>
+<td><%= item.quantity %>&times;</td>
+<td><%= item.product.title %></td>
+<td><%= number_to_currency(item.total_price) %> </td>
+<td><%= button_to 'Delete Item',item, :method => :delete %></td>
+</tr>
+<% end %>
+<tr class="total_line">
+<td colspan="2">Total</td>
+<td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
+  </tr>
+</table>
 
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>

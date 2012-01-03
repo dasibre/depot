@@ -36,7 +36,7 @@ class ProductTest < ActiveSupport::TestCase
   end
   #Test image url
   test "image_url" do
-    ok = %w{ fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg http://a.b.c/x/y/z/fred.gif}
+    ok = %w{  fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg http://a.b.c/x/y/z/fred.gif}
     bad = %w{ freddoc fred.gif/more fred.gif.more}
 
     ok.each do |name|

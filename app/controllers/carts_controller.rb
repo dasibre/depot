@@ -19,11 +19,18 @@ class CartsController < ApplicationController
       logger.error "Cart is invalid #{params[:id]}"
       redirect_to store_index_url, :notice => 'Invalid Cart, missing cart'
     else
+      if @cart.line_items.count.zero?
+        respond_to do |format|
+          format.html { redirect_to store_index_url, :notice => 'Cart Items have been deleted,Your cart is empty'}
+          format.json { render json: @cart}
+        end
+    else
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @cart }
     end
     end
+  end
   end
 
   # GET /carts/new
